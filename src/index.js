@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
-const postRoute = require('../routes/post.route');
-const userRoutes = require('../routes/user.route');
+const cameraRoutes = require('../routes/camera.route');
+const eventRoutes = require('../routes/event.route');
 require('dotenv').config();
 const port = process.env.PORT || 4000;
 
@@ -15,9 +15,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res)=>{
     res.send("Sawasdee");
   });
-  app.use("/posts", postRoute);
-  app.use('/users', userRoutes);
-  
+  app.use('/camera', cameraRoutes);
+  app.use('/event', eventRoutes);
+
+
   app.listen(port, () => {
     console.log("App started at port: " + port);
   });
